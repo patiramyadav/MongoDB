@@ -1,6 +1,7 @@
 Mongodb 
 
-<h4>SQL               Mongodb</h4>
+SQL               Mongodb
+
 Where             $match
 Group BY          $group
 Having            $match
@@ -10,3 +11,250 @@ Limit             $limit
 Sum()             $sum
 Count()           $sum
 Join              $lookup
+
+db.users.find()
+
+{
+        "_id" : ObjectId("57840c402705108d1d73c04d"),
+        "isActive" : false,
+        "balance" : "$3,960.64",
+        "age" : 30,
+        "eyeColor" : "blue",
+        "name" : "Dawn Keith",
+        "gender" : "female",
+        "company" : "COSMOSIS",
+        "email" : "dawnkeith@cosmosis.com",
+        "phone" : "+1 (839) 437-3421",
+        "address" : "392 Clifford Place, Fontanelle, Arizona, 2687"
+}
+{
+        "_id" : ObjectId("57840c402705108d1d73c04e"),
+        "isActive" : false,
+        "balance" : "$1,280.14",
+        "age" : 31,
+        "eyeColor" : "green",
+        "name" : "Bettie Eaton",
+        "gender" : "female",
+        "company" : "COMTREK",
+        "email" : "bettieeaton@comtrek.com",
+        "phone" : "+1 (861) 460-2317",
+        "address" : "203 Allen Avenue, Elrama, North Carolina, 4453"
+}
+{
+        "_id" : ObjectId("57840c402705108d1d73c04f"),
+        "isActive" : true,
+        "balance" : "$2,042.37",
+        "age" : 38,
+        "eyeColor" : "green",
+        "name" : "Margie Ayala",
+        "gender" : "female",
+        "company" : "VOIPA",
+        "email" : "margieayala@voipa.com",
+        "phone" : "+1 (941) 569-2231",
+        "address" : "111 Schroeders Avenue, Suitland, Louisiana, 7042"
+}
+{
+        "_id" : ObjectId("57840c402705108d1d73c050"),
+        "isActive" : false,
+        "balance" : "$3,170.35",
+        "age" : 37,
+        "eyeColor" : "blue",
+        "name" : "Baker Townsend",
+        "gender" : "male",
+        "company" : "EVIDENDS",
+        "email" : "bakertownsend@evidends.com",
+        "phone" : "+1 (808) 500-2793",
+        "address" : "190 Just Court, Canoochee, Alabama, 325"
+}
+{
+        "_id" : ObjectId("57840c402705108d1d73c051"),
+        "isActive" : false,
+        "balance" : "$1,402.05",
+        "age" : 29,
+        "eyeColor" : "blue",
+        "name" : "Annmarie Atkinson",
+        "gender" : "female",
+        "company" : "MEDESIGN",
+        "email" : "annmarieatkinson@medesign.com",
+        "phone" : "+1 (928) 524-3812",
+        "address" : "757 Beaumont Street, Santel, West Virginia, 3370"
+}
+{
+        "_id" : ObjectId("57840c402705108d1d73c052"),
+        "isActive" : false,
+        "balance" : "$1,404.23",
+        "age" : 26,
+        "eyeColor" : "blue",
+        "name" : "Stark Jenkins",
+        "gender" : "male",
+        "company" : "HINWAY",
+        "email" : "starkjenkins@hinway.com",
+        "phone" : "+1 (943) 542-3591",
+        "address" : "766 Cooke Court, Dunbar, Connecticut, 9512"
+}
+{
+        "_id" : ObjectId("57840c402705108d1d73c053"),
+        "isActive" : false,
+        "balance" : "$1,247.08",
+        "age" : 36,
+        "eyeColor" : "green",
+        "name" : "Odonnell Rollins",
+        "gender" : "male",
+        "company" : "NEXGENE",
+        "email" : "odonnellrollins@nexgene.com",
+        "phone" : "+1 (810) 521-2350",
+        "address" : "210 Pleasant Place, Lloyd, Mississippi, 1636"
+}
+{
+        "_id" : ObjectId("57840c402705108d1d73c054"),
+        "isActive" : false,
+        "balance" : "$2,284.89",
+        "age" : 20,
+        "eyeColor" : "brown",
+        "name" : "Rachelle Chang",
+        "gender" : "female",
+        "company" : "VERAQ",
+        "email" : "rachellechang@veraq.com",
+        "phone" : "+1 (955) 564-2002",
+        "address" : "220 Drew Street, Ventress, Puerto Rico, 8432"
+}
+Query;
+db.users.aggregate([{$group:{_id:{gender:"$gender"},count:{$sum:1}}}])
+Result:
+{ "_id" : { "gender" : "female" }, "count" : 15 }
+{ "_id" : { "gender" : "male" }, "count" : 20 }
+
+Query:
+db.users.aggregate([{$group:{_id:{age:"$age"},count:{$sum:1}}}])
+Result:
+{ "_id" : { "age" : 25 }, "count" : 1 }
+{ "_id" : { "age" : 28 }, "count" : 1 }
+{ "_id" : { "age" : 33 }, "count" : 1 }
+{ "_id" : { "age" : 35 }, "count" : 2 }
+{ "_id" : { "age" : 40 }, "count" : 1 }
+{ "_id" : { "age" : 32 }, "count" : 3 }
+{ "_id" : { "age" : 24 }, "count" : 3 }
+{ "_id" : { "age" : 34 }, "count" : 3 }
+{ "_id" : { "age" : 21 }, "count" : 1 }
+{ "_id" : { "age" : 23 }, "count" : 2 }
+{ "_id" : { "age" : 30 }, "count" : 2 }
+{ "_id" : { "age" : 31 }, "count" : 1 }
+{ "_id" : { "age" : 38 }, "count" : 3 }
+{ "_id" : { "age" : 37 }, "count" : 2 }
+{ "_id" : { "age" : 29 }, "count" : 1 }
+{ "_id" : { "age" : 26 }, "count" : 1 }
+{ "_id" : { "age" : 36 }, "count" : 3 }
+{ "_id" : { "age" : 20 }, "count" : 1 }
+{ "_id" : { "age" : 39 }, "count" : 3 }
+Query:
+db.users.aggregate([{$group:{_id:{age:"$age"},count:{$sum:1}}}, {$sort:{"count":1}}])
+Result:
+{ "_id" : { "age" : 25 }, "count" : 1 }
+{ "_id" : { "age" : 28 }, "count" : 1 }
+{ "_id" : { "age" : 33 }, "count" : 1 }
+{ "_id" : { "age" : 40 }, "count" : 1 }
+{ "_id" : { "age" : 21 }, "count" : 1 }
+{ "_id" : { "age" : 31 }, "count" : 1 }
+{ "_id" : { "age" : 29 }, "count" : 1 }
+{ "_id" : { "age" : 26 }, "count" : 1 }
+{ "_id" : { "age" : 20 }, "count" : 1 }
+{ "_id" : { "age" : 35 }, "count" : 2 }
+{ "_id" : { "age" : 23 }, "count" : 2 }
+{ "_id" : { "age" : 30 }, "count" : 2 }
+{ "_id" : { "age" : 37 }, "count" : 2 }
+{ "_id" : { "age" : 32 }, "count" : 3 }
+{ "_id" : { "age" : 24 }, "count" : 3 }
+{ "_id" : { "age" : 34 }, "count" : 3 }
+{ "_id" : { "age" : 38 }, "count" : 3 }
+{ "_id" : { "age" : 36 }, "count" : 3 }
+{ "_id" : { "age" : 39 }, "count" : 3 }
+Query:
+db.users.aggregate([{$group:{_id:{age:"$age"},count:{$sum:1}}}, {$sort:{"_id.age":1}}])
+Result:
+{ "_id" : { "age" : 20 }, "count" : 1 }
+{ "_id" : { "age" : 21 }, "count" : 1 }
+{ "_id" : { "age" : 23 }, "count" : 2 }
+{ "_id" : { "age" : 24 }, "count" : 3 }
+{ "_id" : { "age" : 25 }, "count" : 1 }
+{ "_id" : { "age" : 26 }, "count" : 1 }
+{ "_id" : { "age" : 28 }, "count" : 1 }
+{ "_id" : { "age" : 29 }, "count" : 1 }
+{ "_id" : { "age" : 30 }, "count" : 2 }
+{ "_id" : { "age" : 31 }, "count" : 1 }
+{ "_id" : { "age" : 32 }, "count" : 3 }
+{ "_id" : { "age" : 33 }, "count" : 1 }
+{ "_id" : { "age" : 34 }, "count" : 3 }
+{ "_id" : { "age" : 35 }, "count" : 2 }
+{ "_id" : { "age" : 36 }, "count" : 3 }
+{ "_id" : { "age" : 37 }, "count" : 2 }
+{ "_id" : { "age" : 38 }, "count" : 3 }
+{ "_id" : { "age" : 39 }, "count" : 3 }
+{ "_id" : { "age" : 40 }, "count" : 1 }
+
+query:
+db.users.aggregate([{$group:{_id:{age:"$age"},count:{$sum:1}}}, {$sort:{"_id.age":1}}, {$limit:2}])
+Result:
+{ "_id" : { "age" : 20 }, "count" : 1 }
+{ "_id" : { "age" : 21 }, "count" : 1 }
+
+query:
+db.users.aggregate([{$match:{age:24}}, {$project:{name:"$name", age:"$age"}}])
+Result:
+{ "_id" : ObjectId("57840c402705108d1d73c05b"), "age" : 24, "name" : "Tommie Chase" }
+{ "_id" : ObjectId("57840c402705108d1d73c05d"), "age" : 24, "name" : "Mercado Sweeney" }
+{ "_id" : ObjectId("57840c402705108d1d73c06a"), "age" : 24, "name" : "Webster Sanders" }
+
+query:
+db.users.aggregate([{$match:{age:{$gt:23, $lt:30}}}, {$project:{name:"$name", age:"$age"}}])
+Result:
+{ "_id" : ObjectId("57840c402705108d1d73c051"), "age" : 29, "name" : "Annmarie Atkinson" }
+{ "_id" : ObjectId("57840c402705108d1d73c052"), "age" : 26, "name" : "Stark Jenkins" }
+{ "_id" : ObjectId("57840c402705108d1d73c05b"), "age" : 24, "name" : "Tommie Chase" }
+{ "_id" : ObjectId("57840c402705108d1d73c05d"), "age" : 24, "name" : "Mercado Sweeney" }
+{ "_id" : ObjectId("57840c402705108d1d73c06a"), "age" : 24, "name" : "Webster Sanders" }
+{ "_id" : ObjectId("57840c402705108d1d73c06d"), "age" : 28, "name" : "Juana Puckett" }
+{ "_id" : ObjectId("57840c402705108d1d73c06e"), "age" : 25, "name" : "Juliette Slater" }
+
+db.users.aggregate([{$match:{age:{$gt:23, $lt:30}}}, {$project:{name:"$name", age:"$age"}}, {$sort:{name:1}}])
+
+{ "_id" : ObjectId("57840c402705108d1d73c051"), "age" : 29, "name" : "Annmarie Atkinson" }
+{ "_id" : ObjectId("57840c402705108d1d73c06d"), "age" : 28, "name" : "Juana Puckett" }
+{ "_id" : ObjectId("57840c402705108d1d73c06e"), "age" : 25, "name" : "Juliette Slater" }
+{ "_id" : ObjectId("57840c402705108d1d73c05d"), "age" : 24, "name" : "Mercado Sweeney" }
+{ "_id" : ObjectId("57840c402705108d1d73c052"), "age" : 26, "name" : "Stark Jenkins" }
+{ "_id" : ObjectId("57840c402705108d1d73c05b"), "age" : 24, "name" : "Tommie Chase" }
+{ "_id" : ObjectId("57840c402705108d1d73c06a"), "age" : 24, "name" : "Webster Sanders" }
+
+
+ db.orders.find()
+{ "_id" : 1, "item" : "abc", "price" : 12, "quantity" : 2 }
+{ "_id" : 2, "item" : "jkl", "price" : 20, "quantity" : 1 }
+{ "_id" : 3 }
+
+ db.inventory.find()
+{ "_id" : 1, "sku" : "abc", "description" : "product 1", "instock" : 120 }
+{ "_id" : 2, "sku" : "def", "description" : "product 2", "instock" : 80 }
+{ "_id" : 3, "sku" : "ijk", "description" : "product 3", "instock" : 60 }
+{ "_id" : 4, "sku" : "jkl", "description" : "product 4", "instock" : 70 }
+{ "_id" : 5, "sku" : null, "description" : "Incomplete" }
+{ "_id" : 6 }
+
+query: $lookup
+db.orders.aggregate([
+    {
+      $lookup:
+        {
+          from: "inventory",
+          localField: "item",
+          foreignField: "sku",
+          as: "inventory_docs"
+        }
+   }
+])
+Result:
+{ "_id" : 1, "item" : "abc", "price" : 12, "quantity" : 2, "inventory_docs" : [ { "_id" : 1, "sku" : "abc", "description" : "product 1", "instock" : 120 } ] }
+{ "_id" : 2, "item" : "jkl", "price" : 20, "quantity" : 1, "inventory_docs" : [ { "_id" : 4, "sku" : "jkl", "description" : "product 4", "instock" : 70 } ] }
+{ "_id" : 3, "inventory_docs" : [ { "_id" : 5, "sku" : null, "description" : "Incomplete" }, { "_id" : 6 } ] }
+
+
+
