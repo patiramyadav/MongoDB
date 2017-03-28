@@ -1,1 +1,12 @@
 Mongodb 
+
+<h4>SQL               Mongodb</h4>
+Where             $match
+Group BY          $group
+Having            $match
+Select            $project
+Orderby           $sort
+Limit             $limit
+Sum()             $sum
+Count()           $sum
+Join              $lookup
